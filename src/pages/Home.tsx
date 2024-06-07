@@ -23,7 +23,6 @@ const Home: React.FC = () => {
 
   const handleSearch = (query: string) => {
     console.log('Search query:', query);
-    // Você pode adicionar a lógica de busca aqui
   };
 
   return (

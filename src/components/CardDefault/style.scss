@@ -28,7 +28,6 @@
   bottom: -80px;
   left: -5rem;
   width: 16rem;
-  z-index: 1;
 }
 
 .card-right {
@@ -115,6 +114,11 @@
   appearance: none;
 }
 
+.filter-dropdown option {
+  color: black;
+  background: white;
+}
+
 @media (max-width: 768px) {
   .card-default {
     flex-direction: column;
@@ -182,6 +186,5 @@
     bottom: 16rem;
     transform: translate(50%, 50%);
     width: 20rem;
-    z-index: 3;
   }
 }
