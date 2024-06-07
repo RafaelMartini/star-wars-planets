@@ -5,7 +5,7 @@ export const ScreenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 export const HomeContainer = styled.div`
