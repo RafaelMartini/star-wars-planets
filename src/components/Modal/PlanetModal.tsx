@@ -29,7 +29,11 @@ const planetImages: { [key: string]: string } = {
   Alderaan: 'https://cryptospro.com.br/planetas/planeta_0009_alderaan.png',
 };
 
-const PlanetModal: React.FC<PlanetModalProps> = ({ isOpen, onRequestClose, planet }) => {
+const PlanetModal: React.FC<PlanetModalProps> = ({
+  isOpen,
+  onRequestClose,
+  planet,
+}) => {
   if (!planet) {
     return null;
   }
@@ -47,7 +51,14 @@ const PlanetModal: React.FC<PlanetModalProps> = ({ isOpen, onRequestClose, plane
       >
         <div className="modal-content">
           <div className="modal-left">
-            {planetImage && <LazyLoadImage src={planetImage} alt={planet.name} effect="blur" className="planet-image" />}
+            {planetImage && (
+              <LazyLoadImage
+                src={planetImage}
+                alt={planet.name}
+                effect="blur"
+                className="planet-image"
+              />
+            )}
             <div className="planet-name-container">
               <span className="planet-label">Planet:</span>
               <h2 className="planet-name">{planet.name}</h2>
@@ -56,23 +67,35 @@ const PlanetModal: React.FC<PlanetModalProps> = ({ isOpen, onRequestClose, plane
           <div className="modal-right">
             <div className="planet-info-row">
               <img src={imgClimate} alt="Climate Icon" className="info-icon" />
-              <span className="planet-info-label">Climate:</span> {planet.climate}
+              <span className="planet-info-label">Climate:</span>{' '}
+              {planet.climate}
             </div>
             <div className="planet-info-row">
               <img src={imgTerrain} alt="Terrain Icon" className="info-icon" />
-              <span className="planet-info-label">Terrain:</span> {planet.terrain}
+              <span className="planet-info-label">Terrain:</span>{' '}
+              {planet.terrain}
             </div>
             <div className="planet-info-row">
-              <img src={imgPopulation} alt="Population Icon" className="info-icon" />
-              <span className="planet-info-label">Population:</span> {planet.population}
+              <img
+                src={imgPopulation}
+                alt="Population Icon"
+                className="info-icon"
+              />
+              <span className="planet-info-label">Population:</span>{' '}
+              {planet.population}
             </div>
           </div>
         </div>
         <div className="planet-section">
           <h3 className="section-title">
-            <img src={imgResidents} alt="Residents Icon" className="section-icon" />
+            <img
+              src={imgResidents}
+              alt="Residents Icon"
+              className="section-icon"
+            />
             Residents:
           </h3>
+          <div className="divider"></div>
           <div className="section-content">
             {planet.residents && planet.residents.length > 0 ? (
               planet.residents.map((resident: any, index: number) => (
@@ -91,6 +114,7 @@ const PlanetModal: React.FC<PlanetModalProps> = ({ isOpen, onRequestClose, plane
             <img src={imgFilms} alt="Films Icon" className="section-icon" />
             Films ({planet.films.length}):
           </h3>
+          <div className="divider"></div>
           <div className="section-content">
             {planet.films && planet.films.length > 0 ? (
               planet.films.map((film: any, index: number) => (
@@ -105,7 +129,11 @@ const PlanetModal: React.FC<PlanetModalProps> = ({ isOpen, onRequestClose, plane
           </div>
         </div>
       </Modal>
-      {isOpen && <button onClick={onRequestClose} className="back-button">&lt; Voltar</button>}
+      {isOpen && (
+        <button onClick={onRequestClose} className="back-button">
+          &lt; Voltar
+        </button>
+      )}
     </>
   );
 };
