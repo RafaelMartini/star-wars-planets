@@ -1,69 +1,70 @@
-.screen-wrapper {
+import styled from 'styled-components';
+import wallpaper from '../assets/images/wallpaper-star-wars.jpg';
+
+export const ScreenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
+  overflow: hidden;
+`;
 
-.home-container {
+export const HomeContainer = styled.div`
   flex: 1;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-image: url('../assets/images/wallpaper-star-wars.jpg');
+  background-image: url(${wallpaper});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  margin: 0;
-}
+`;
 
-.home-header {
+export const HomeHeader = styled.header`
   height: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
 
-@media (max-width: 768px) {
-  .home-header {
+  @media (max-width: 768px) {
     height: 30%;
   }
-}
+`;
 
-.home-title {
+export const HomeTitle = styled.img`
   width: 18rem;
   height: auto;
   margin-top: 1rem;
-}
+`;
 
-.home-content {
-  height: 52%;
+export const HomeContent = styled.main`
+  height: 62%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+  margin-bottom: 2rem;
 
-.home-footer {
+  @media (max-width: 768px) {
+    height: 69%;
+  }
+`;
+
+export const HomeFooter = styled.footer`
   height: 8%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
-}
+`;
 
-.footer-image {
+export const FooterImage = styled.img`
   max-width: 100%;
   height: auto;
-}
+`;
 
-.error {
+export const Error = styled.div`
   color: red;
   margin-top: 10px;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-}
+`;

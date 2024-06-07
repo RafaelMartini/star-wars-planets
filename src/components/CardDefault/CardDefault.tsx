@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './style.scss';
 import imgCardLeft from '../../assets/images/mask-group-left.png';
 import imgVetor from '../../assets/images/vetor-img.png';
 import imgIconSeta from '../../assets/images/icon-seta.png';
@@ -8,6 +7,23 @@ import imgSpaceship from '../../assets/images/spaceship.png';
 import { usePlanets } from '../../hooks/usePlanet';
 import { usePlanetByName } from '../../hooks/usePlanetByName';
 import PlanetModal from '../Modal/PlanetModal';
+import {
+  CardDefaultContainer,
+  CardLeft,
+  CardImage,
+  SpaceshipIcon,
+  CardRight,
+  CardText,
+  CardInput,
+  CardButton,
+  LupaIcon,
+  FilterContainer,
+  LineImage,
+  DropdownWrapper,
+  IconSeta,
+  TextFilter,
+  FilterDropdown,
+} from './CardDefault.styles';
 
 interface CardDefaultProps {
   onSearch: (query: string) => void;
@@ -104,44 +120,40 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
 
   return (
     <>
-      <div className="card-default">
-        <div className="card-left">
-          <img src={imgCardLeft} alt="Example" className="card-image" />
-        </div>
-        <div className="card-right">
-          <p>
+      <CardDefaultContainer>
+        <CardLeft>
+          <CardImage src={imgCardLeft} alt="Example" />
+        </CardLeft>
+        <CardRight>
+          <CardText>
             Discover all the information about Planets of the Star Wars Saga
-          </p>
-          <div className="input-wrapper">
-            <input
+          </CardText>
+          <div>
+            <CardInput
               type="text"
               value={query}
               onChange={handleInputChange}
               placeholder="Enter the name of the planet"
-              className="card-input"
             />
             {suggestion && suggestion.toLowerCase() !== query.toLowerCase() && (
-              <div className="suggestion">
+              <div>
                 {query}
-                <span className="suggestion-rest">
-                  {suggestion.slice(query.length)}
-                </span>
+                <span>{suggestion.slice(query.length)}</span>
               </div>
             )}
           </div>
-          <button onClick={handleSearch} className="card-button">
-            <img src={imgLupaFilter} alt="Lupa Icon" className="lupa-icon" />
+          <CardButton onClick={handleSearch}>
+            <LupaIcon src={imgLupaFilter} alt="Lupa Icon" />
             Search
-          </button>
-          <div className="filter-container">
-            <img src={imgVetor} alt="Line" className="line-image" />
-            <div className="text-filter">Filter:</div>
-            <div className="dropdown-wrapper">
-              <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
-              <select
+          </CardButton>
+          <FilterContainer>
+            <LineImage src={imgVetor} alt="Line" />
+            <TextFilter>Filter:</TextFilter>
+            <DropdownWrapper>
+              <IconSeta src={imgIconSeta} alt="Seta Icon" />
+              <FilterDropdown
                 value={nameFilter}
                 onChange={e => setNameFilter(e.target.value)}
-                className="filter-dropdown"
               >
                 <option value="">Name</option>
                 {planetsData?.results?.map((planet: Planet) => (
@@ -149,14 +161,13 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
                     {planet.name}
                   </option>
                 ))}
-              </select>
-            </div>
-            <div className="dropdown-wrapper">
-              <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
-              <select
+              </FilterDropdown>
+            </DropdownWrapper>
+            <DropdownWrapper>
+              <IconSeta src={imgIconSeta} alt="Seta Icon" />
+              <FilterDropdown
                 value={populationFilter}
                 onChange={e => setPopulationFilter(e.target.value)}
-                className="filter-dropdown"
               >
                 <option value="">Population</option>
                 {planetsData?.results?.map((planet: Planet) => (
@@ -164,12 +175,12 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
                     {planet.population}
                   </option>
                 ))}
-              </select>
-            </div>
-          </div>
-        </div>
-        <img src={imgSpaceship} alt="Spaceship" className="spaceship-icon" />
-      </div>
+              </FilterDropdown>
+            </DropdownWrapper>
+          </FilterContainer>
+        </CardRight>
+        <SpaceshipIcon src={imgSpaceship} alt="Spaceship" />
+      </CardDefaultContainer>
       <PlanetModal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
