@@ -1,14 +1,33 @@
 import React from 'react';
-import Modal from 'react-modal';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import './style.scss';
-
 import imgClimate from '../../assets/images/climate.png';
 import imgTerrain from '../../assets/images/terrain.png';
 import imgPopulation from '../../assets/images/population.png';
 import imgResidents from '../../assets/images/residents.png';
 import imgFilms from '../../assets/images/films.png';
+
+import {
+  StyledModal,
+  Overlay,
+  ModalContent,
+  ModalLeft,
+  PlanetImage,
+  PlanetNameContainer,
+  PlanetLabel,
+  PlanetName,
+  ModalRight,
+  PlanetInfoRow,
+  InfoIcon,
+  PlanetInfoLabel,
+  PlanetSection,
+  SectionTitle,
+  SectionIcon,
+  SectionContent,
+  ResidentName,
+  FilmTitle,
+  Divider,
+  BackButton,
+} from './PlanetModal.styles';
 
 interface PlanetModalProps {
   isOpen: boolean;
@@ -42,98 +61,79 @@ const PlanetModal: React.FC<PlanetModalProps> = ({
 
   return (
     <>
-      <Modal
+      <StyledModal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
         contentLabel="Planet Details"
-        className="planet-modal"
-        overlayClassName="planet-modal-overlay"
+        overlayElement={(props, contentElement) => (
+          <Overlay {...props}>{contentElement}</Overlay>
+        )}
       >
-        <div className="modal-content">
-          <div className="modal-left">
+        <ModalContent>
+          <ModalLeft>
             {planetImage && (
-              <LazyLoadImage
-                src={planetImage}
-                alt={planet.name}
-                effect="blur"
-                className="planet-image"
-              />
+              <PlanetImage src={planetImage} alt={planet.name} effect="blur" />
             )}
-            <div className="planet-name-container">
-              <span className="planet-label">Planet:</span>
-              <h2 className="planet-name">{planet.name}</h2>
-            </div>
-          </div>
-          <div className="modal-right">
-            <div className="planet-info-row">
-              <img src={imgClimate} alt="Climate Icon" className="info-icon" />
-              <span className="planet-info-label">Climate:</span>{' '}
-              {planet.climate}
-            </div>
-            <div className="planet-info-row">
-              <img src={imgTerrain} alt="Terrain Icon" className="info-icon" />
-              <span className="planet-info-label">Terrain:</span>{' '}
-              {planet.terrain}
-            </div>
-            <div className="planet-info-row">
-              <img
-                src={imgPopulation}
-                alt="Population Icon"
-                className="info-icon"
-              />
-              <span className="planet-info-label">Population:</span>{' '}
-              {planet.population}
-            </div>
-          </div>
-        </div>
-        <div className="planet-section">
-          <h3 className="section-title">
-            <img
-              src={imgResidents}
-              alt="Residents Icon"
-              className="section-icon"
-            />
+            <PlanetNameContainer>
+              <PlanetLabel>Planet:</PlanetLabel>
+              <PlanetName>{planet.name}</PlanetName>
+            </PlanetNameContainer>
+          </ModalLeft>
+          <ModalRight>
+            <PlanetInfoRow>
+              <InfoIcon src={imgClimate} alt="Climate Icon" />
+              <PlanetInfoLabel>Climate:</PlanetInfoLabel> {planet.climate}
+            </PlanetInfoRow>
+            <PlanetInfoRow>
+              <InfoIcon src={imgTerrain} alt="Terrain Icon" />
+              <PlanetInfoLabel>Terrain:</PlanetInfoLabel> {planet.terrain}
+            </PlanetInfoRow>
+            <PlanetInfoRow>
+              <InfoIcon src={imgPopulation} alt="Population Icon" />
+              <PlanetInfoLabel>Population:</PlanetInfoLabel> {planet.population}
+            </PlanetInfoRow>
+          </ModalRight>
+        </ModalContent>
+        <PlanetSection>
+          <SectionTitle>
+            <SectionIcon src={imgResidents} alt="Residents Icon" />
             Residents:
-          </h3>
-          <div className="divider"></div>
-          <div className="section-content">
+          </SectionTitle>
+          <Divider />
+          <SectionContent>
             {planet.residents && planet.residents.length > 0 ? (
               planet.residents.map((resident: any, index: number) => (
-                <span key={index} className="resident-name">
+                <ResidentName key={index}>
                   {resident.name}
                   {index < planet.residents.length - 1 ? ',' : '.'}
-                </span>
+                </ResidentName>
               ))
             ) : (
               <span>No residents available.</span>
             )}
-          </div>
-        </div>
-        <div className="planet-section">
-          <h3 className="section-title">
-            <img src={imgFilms} alt="Films Icon" className="section-icon" />
+          </SectionContent>
+        </PlanetSection>
+        <PlanetSection>
+          <SectionTitle>
+            <SectionIcon src={imgFilms} alt="Films Icon" />
             Films ({planet.films.length}):
-          </h3>
-          <div className="divider"></div>
-          <div className="section-content">
+          </SectionTitle>
+          <Divider />
+          <SectionContent>
             {planet.films && planet.films.length > 0 ? (
               planet.films.map((film: any, index: number) => (
-                <span key={index} className="film-title">
+                <FilmTitle key={index}>
                   {film.title}
                   {index < planet.films.length - 1 ? ',' : '.'}
-                </span>
+                </FilmTitle>
               ))
             ) : (
               <span>No films available.</span>
             )}
-          </div>
-        </div>
-      </Modal>
-      {isOpen && (
-        <button onClick={onRequestClose} className="back-button">
-          &lt; Voltar
-        </button>
-      )}
+          </SectionContent>
+        </PlanetSection>
+      </StyledModal>
+      {isOpen && <BackButton onClick={onRequestClose}>&lt; Voltar</BackButton>}
     </>
   );
 };

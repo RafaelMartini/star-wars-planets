@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './style.scss';
 import imgCardLeft from '../../assets/images/mask-group-left.png';
 import imgVetor from '../../assets/images/vetor-img.png';
 import imgIconSeta from '../../assets/images/icon-seta.png';
@@ -8,6 +7,23 @@ import imgSpaceship from '../../assets/images/spaceship.png';
 import { usePlanets } from '../../hooks/usePlanet';
 import { usePlanetByName } from '../../hooks/usePlanetByName';
 import PlanetModal from '../Modal/PlanetModal';
+import {
+  CardDefaultContainer,
+  CardLeft,
+  CardImage,
+  SpaceshipIcon,
+  CardRight,
+  CardText,
+  CardInput,
+  CardButton,
+  LupaIcon,
+  FilterContainer,
+  LineImage,
+  DropdownWrapper,
+  IconSeta,
+  TextFilter,
+  FilterDropdown,
+} from './CardDefault.styles';
 
 interface CardDefaultProps {
   onSearch: (query: string) => void;
@@ -29,6 +45,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
   const [suggestion, setSuggestion] = useState('');
+  const [isCardVisible, setIsCardVisible] = useState(true);
 
   const {
     data: planetsData,
@@ -95,6 +112,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const handleSearch = () => {
     refetchPlanet();
     setModalIsOpen(true);
+    setIsCardVisible(false);
     onSearch(query);
   };
 
@@ -104,75 +122,76 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
 
   return (
     <>
-      <div className="card-default">
-        <div className="card-left">
-          <img src={imgCardLeft} alt="Example" className="card-image" />
-        </div>
-        <div className="card-right">
-          <p>
-            Discover all the information about Planets of the Star Wars Saga
-          </p>
-          <div className="input-wrapper">
-            <input
-              type="text"
-              value={query}
-              onChange={handleInputChange}
-              placeholder="Enter the name of the planet"
-              className="card-input"
-            />
-            {suggestion && suggestion.toLowerCase() !== query.toLowerCase() && (
-              <div className="suggestion">
-                {query}
-                <span className="suggestion-rest">
-                  {suggestion.slice(query.length)}
-                </span>
-              </div>
-            )}
-          </div>
-          <button onClick={handleSearch} className="card-button">
-            <img src={imgLupaFilter} alt="Lupa Icon" className="lupa-icon" />
-            Search
-          </button>
-          <div className="filter-container">
-            <img src={imgVetor} alt="Line" className="line-image" />
-            <div className="text-filter">Filter:</div>
-            <div className="dropdown-wrapper">
-              <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
-              <select
-                value={nameFilter}
-                onChange={e => setNameFilter(e.target.value)}
-                className="filter-dropdown"
-              >
-                <option value="">Name</option>
-                {planetsData?.results?.map((planet: Planet) => (
-                  <option key={planet.name} value={planet.name}>
-                    {planet.name}
-                  </option>
-                ))}
-              </select>
+      {isCardVisible && (
+        <CardDefaultContainer>
+          <CardLeft>
+            <CardImage src={imgCardLeft} alt="Example" />
+          </CardLeft>
+          <CardRight>
+            <CardText>
+              Discover all the information about Planets of the Star Wars Saga
+            </CardText>
+            <div>
+              <CardInput
+                type="text"
+                value={query}
+                onChange={handleInputChange}
+                placeholder="Enter the name of the planet"
+              />
+              {suggestion &&
+                suggestion.toLowerCase() !== query.toLowerCase() && (
+                  <div>
+                    {query}
+                    <span>{suggestion.slice(query.length)}</span>
+                  </div>
+                )}
             </div>
-            <div className="dropdown-wrapper">
-              <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
-              <select
-                value={populationFilter}
-                onChange={e => setPopulationFilter(e.target.value)}
-                className="filter-dropdown"
-              >
-                <option value="">Population</option>
-                {planetsData?.results?.map((planet: Planet) => (
-                  <option key={planet.population} value={planet.population}>
-                    {planet.population}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-        <img src={imgSpaceship} alt="Spaceship" className="spaceship-icon" />
-      </div>
+            <CardButton onClick={handleSearch}>
+              <LupaIcon src={imgLupaFilter} alt="Lupa Icon" />
+              Search
+            </CardButton>
+            <FilterContainer>
+              <LineImage src={imgVetor} alt="Line" />
+              <TextFilter>Filter:</TextFilter>
+              <DropdownWrapper>
+                <IconSeta src={imgIconSeta} alt="Seta Icon" />
+                <FilterDropdown
+                  value={nameFilter}
+                  onChange={e => setNameFilter(e.target.value)}
+                >
+                  <option value="">Name</option>
+                  {planetsData?.results?.map((planet: Planet) => (
+                    <option key={planet.name} value={planet.name}>
+                      {planet.name}
+                    </option>
+                  ))}
+                </FilterDropdown>
+              </DropdownWrapper>
+              <DropdownWrapper>
+                <IconSeta src={imgIconSeta} alt="Seta Icon" />
+                <FilterDropdown
+                  value={populationFilter}
+                  onChange={e => setPopulationFilter(e.target.value)}
+                >
+                  <option value="">Population</option>
+                  {planetsData?.results?.map((planet: Planet) => (
+                    <option key={planet.population} value={planet.population}>
+                      {planet.population}
+                    </option>
+                  ))}
+                </FilterDropdown>
+              </DropdownWrapper>
+            </FilterContainer>
+          </CardRight>
+          <SpaceshipIcon src={imgSpaceship} alt="Spaceship" />
+        </CardDefaultContainer>
+      )}
       <PlanetModal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          setIsCardVisible(true);
+        }}
         planet={selectedPlanet}
       />
       {planetError && <p>Error: {planetError.message}</p>}
