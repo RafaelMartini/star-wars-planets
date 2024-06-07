@@ -32,12 +32,13 @@
 O Star Wars Planets foi criado para mostrar os planetas da saga Star Wars, baseado nos filtros podemos saber a população e região, ver o planeta, divirta-se pesquisando..
 
 <div align="center" id="top"> 
-  <img src="./assets/images/projectImg.png" alt="star-wars-planets" />
-  <img src="./assets/images/projectImg1.png" alt="star-wars-planets" />
-  <img src="./assets/images/projectImg2.png" alt="star-wars-planets" />
-  <img src="./assets/images/projectImg3.png" alt="star-wars-planets" />
-  <img src="./assets/images/projectImg4.png" alt="star-wars-planets" />
-  <img src="./assets/images/projectImg5.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg1.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg2.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg3.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg4.png" alt="star-wars-planets" />
+  <img src="./src/assets/images/projectImg5.png" alt="star-wars-planets" />
+
 </div>
 
 ## :sparkles: Features
@@ -76,10 +77,7 @@ Traduzi o tudo o que vinha de inglês do endpoint para português dinamicamente.
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## :white_check_mark: Requirements
