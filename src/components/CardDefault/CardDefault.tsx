@@ -47,11 +47,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const [suggestion, setSuggestion] = useState('');
   const [isCardVisible, setIsCardVisible] = useState(true);
 
-  const {
-    data: planetsData,
-    isLoading: isLoadingPlanets,
-    isError: isErrorPlanets,
-  } = usePlanets();
+  const { data: planetsData, isError: isErrorPlanets } = usePlanets();
   const {
     data: planetData,
     error: planetError,
