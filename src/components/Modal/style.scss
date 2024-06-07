@@ -40,7 +40,8 @@
 
   @media (max-width: 768px) {
     width: 100%;
-    justify-content: center;
+    justify-content: normal;
+    margin-left: 1rem;
   }
 }
 
@@ -76,6 +77,8 @@
 
   @media (max-width: 768px) {
     width: 100%;
+    text-align: left;
+    margin-left: 8rem;
   }
 }
 
@@ -128,11 +131,18 @@
   font-size: 14px;
 }
 
+.divider {
+  width: calc(100% - 10px);
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px auto;
+}
+
 .back-button {
   display: block;
-  position: absolute; 
-  bottom: 10.50rem; 
-  right: 23rem; 
+  position: absolute;
+  bottom: 10.5rem;
+  right: 23rem;
   padding: 10px 20px;
   background: none;
   color: white;
@@ -142,6 +152,12 @@
   font-weight: 500;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 14px;
+  }
 }
 
 .back-button:hover {

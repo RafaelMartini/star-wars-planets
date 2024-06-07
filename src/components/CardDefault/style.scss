@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
 .card-default {
   display: flex;
   width: 33.33%;
@@ -48,6 +50,8 @@
 }
 
 .card-input {
+  width: 92.5%;
+  height: 26px;
   padding: 10px;
   font-size: 12px;
   border: 1px solid #ddd;
@@ -58,6 +62,7 @@
 
 .card-button {
   display: flex;
+  height: 44px;
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
@@ -102,6 +107,13 @@
   margin-right: 5px;
 }
 
+.text-filter {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  margin-right: 1rem;
+}
+
 .filter-dropdown {
   padding: 0;
   font-size: 12px;
@@ -120,11 +132,17 @@
 }
 
 @media (max-width: 768px) {
+  .filter-container {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
   .card-default {
     flex-direction: column;
-    width: 90%;
+    width: 82%;
     margin: 0 auto;
     padding: 10px;
+    height: 78%;
   }
 
   .card-left {
@@ -151,6 +169,8 @@
   }
 
   .card-input {
+    width: 94%;
+    height: 26px;
     padding: 8px;
     font-size: 14px;
     margin-bottom: 8px;
@@ -158,6 +178,7 @@
 
   .card-button {
     padding: 8px 16px;
+    height: 44px;
     font-size: 14px;
     margin-bottom: 8px;
   }
@@ -183,7 +204,8 @@
 
   .spaceship-icon {
     position: absolute;
-    bottom: 16rem;
+    bottom: 12rem;
+    left: -5rem;
     transform: translate(50%, 50%);
     width: 20rem;
   }

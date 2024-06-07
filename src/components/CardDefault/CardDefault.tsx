@@ -30,8 +30,16 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
   const [suggestion, setSuggestion] = useState('');
 
-  const { data: planetsData, isLoading: isLoadingPlanets, isError: isErrorPlanets } = usePlanets();
-  const { data: planetData, error: planetError, refetch: refetchPlanet } = usePlanetByName(query);
+  const {
+    data: planetsData,
+    isLoading: isLoadingPlanets,
+    isError: isErrorPlanets,
+  } = usePlanets();
+  const {
+    data: planetData,
+    error: planetError,
+    refetch: refetchPlanet,
+  } = usePlanetByName(query);
 
   useEffect(() => {
     if (planetData) {
@@ -42,7 +50,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   useEffect(() => {
     if (query.length > 0 && planetsData) {
       const match = planetsData.results.find((planet: Planet) =>
-        planet.name.toLowerCase().startsWith(query.toLowerCase())
+        planet.name.toLowerCase().startsWith(query.toLowerCase()),
       );
       if (match) {
         setSuggestion(match.name);
@@ -62,7 +70,9 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
 
   useEffect(() => {
     if (nameFilter && planetsData) {
-      const match = planetsData.results.find((planet: Planet) => planet.name === nameFilter);
+      const match = planetsData.results.find(
+        (planet: Planet) => planet.name === nameFilter,
+      );
       if (match) {
         setQuery(match.name);
         setPopulationFilter(match.population);
@@ -72,7 +82,9 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
 
   useEffect(() => {
     if (populationFilter && planetsData) {
-      const match = planetsData.results.find((planet: Planet) => planet.population === populationFilter);
+      const match = planetsData.results.find(
+        (planet: Planet) => planet.population === populationFilter,
+      );
       if (match) {
         setQuery(match.name);
         setNameFilter(match.name);
@@ -111,7 +123,9 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
             {suggestion && suggestion.toLowerCase() !== query.toLowerCase() && (
               <div className="suggestion">
                 {query}
-                <span className="suggestion-rest">{suggestion.slice(query.length)}</span>
+                <span className="suggestion-rest">
+                  {suggestion.slice(query.length)}
+                </span>
               </div>
             )}
           </div>
@@ -121,11 +135,12 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
           </button>
           <div className="filter-container">
             <img src={imgVetor} alt="Line" className="line-image" />
+            <div className="text-filter">Filter:</div>
             <div className="dropdown-wrapper">
               <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
               <select
                 value={nameFilter}
-                onChange={(e) => setNameFilter(e.target.value)}
+                onChange={e => setNameFilter(e.target.value)}
                 className="filter-dropdown"
               >
                 <option value="">Name</option>
@@ -140,7 +155,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
               <img src={imgIconSeta} alt="Seta Icon" className="icon-seta" />
               <select
                 value={populationFilter}
-                onChange={(e) => setPopulationFilter(e.target.value)}
+                onChange={e => setPopulationFilter(e.target.value)}
                 className="filter-dropdown"
               >
                 <option value="">Population</option>
