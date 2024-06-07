@@ -27,7 +27,7 @@ export const HomeHeader = styled.header`
   text-align: center;
 
   @media (max-width: 768px) {
-    height: 30%;
+    height: 25%;
   }
 `;
 

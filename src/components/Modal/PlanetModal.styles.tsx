@@ -10,11 +10,12 @@ export const StyledModal = styled(Modal)`
   margin: 0 auto;
   font-family: Arial, sans-serif;
   outline: none;
+  margin-top: 8%;
 
   @media (max-width: 768px) {
     width: 80%;
     height: 55%;
-    margin-top: 15rem;
+    margin-top: 5rem;
   }
 `;
 
@@ -27,7 +28,7 @@ export const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background: transparent !important;
 `;
 
 export const ModalContent = styled.div`
@@ -149,8 +150,8 @@ export const Divider = styled.div`
 export const BackButton = styled.button`
   display: block;
   position: absolute;
-  bottom: 10.5rem;
-  right: 23rem;
+  bottom: 6.5rem;
+  right: 40rem;
   padding: 10px 20px;
   background: none;
   color: white;
@@ -163,11 +164,12 @@ export const BackButton = styled.button`
 
   @media (max-width: 768px) {
     bottom: 6rem;
-    right: 0rem;
+    right: 2rem;
     font-size: 14px;
   }
 
   &:hover {
     color: #ccc;
+    cursor: pointer;
   }
 `;

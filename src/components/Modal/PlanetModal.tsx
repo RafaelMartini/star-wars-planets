@@ -1,7 +1,5 @@
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
 import imgClimate from '../../assets/images/climate.png';
 import imgTerrain from '../../assets/images/terrain.png';
 import imgPopulation from '../../assets/images/population.png';
@@ -67,7 +65,9 @@ const PlanetModal: React.FC<PlanetModalProps> = ({
         isOpen={isOpen}
         onRequestClose={onRequestClose}
         contentLabel="Planet Details"
-        style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' } }}
+        overlayElement={(props, contentElement) => (
+          <Overlay {...props}>{contentElement}</Overlay>
+        )}
       >
         <ModalContent>
           <ModalLeft>

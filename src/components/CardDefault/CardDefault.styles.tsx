@@ -14,7 +14,7 @@ export const CardDefaultContainer = styled.div`
     width: 82%;
     margin: 0 auto;
     padding: 10px;
-    height: 78%;
+    height: 77%;
   }
 `;
 
@@ -52,8 +52,8 @@ export const SpaceshipIcon = styled.img`
   width: 16rem;
 
   @media (max-width: 768px) {
-    bottom: 13rem;
-    left: -5rem;
+    bottom: 20rem;
+    left: -4rem;
     transform: translate(50%, 50%);
     width: 20rem;
   }
@@ -87,8 +87,8 @@ export const CardText = styled.p`
 `;
 
 export const CardInput = styled.input`
-  width: 92.5%;
-  height: 26px;
+  width: 100%;
+  height: 44px;
   padding: 10px;
   font-size: 12px;
   border: 1px solid #ddd;
@@ -97,8 +97,8 @@ export const CardInput = styled.input`
   text-align: center;
 
   @media (max-width: 768px) {
-    width: 94%;
-    height: 26px;
+    width: 100%;
+    height: 44px;
     padding: 8px;
     font-size: 14px;
     margin-bottom: 8px;

@@ -45,6 +45,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
   const [suggestion, setSuggestion] = useState('');
+  const [isCardVisible, setIsCardVisible] = useState(true);
 
   const {
     data: planetsData,
@@ -111,6 +112,7 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
   const handleSearch = () => {
     refetchPlanet();
     setModalIsOpen(true);
+    setIsCardVisible(false);
     onSearch(query);
   };
 
@@ -120,70 +122,76 @@ const CardDefault: React.FC<CardDefaultProps> = ({ onSearch }) => {
 
   return (
     <>
-      <CardDefaultContainer>
-        <CardLeft>
-          <CardImage src={imgCardLeft} alt="Example" />
-        </CardLeft>
-        <CardRight>
-          <CardText>
-            Discover all the information about Planets of the Star Wars Saga
-          </CardText>
-          <div>
-            <CardInput
-              type="text"
-              value={query}
-              onChange={handleInputChange}
-              placeholder="Enter the name of the planet"
-            />
-            {suggestion && suggestion.toLowerCase() !== query.toLowerCase() && (
-              <div>
-                {query}
-                <span>{suggestion.slice(query.length)}</span>
-              </div>
-            )}
-          </div>
-          <CardButton onClick={handleSearch}>
-            <LupaIcon src={imgLupaFilter} alt="Lupa Icon" />
-            Search
-          </CardButton>
-          <FilterContainer>
-            <LineImage src={imgVetor} alt="Line" />
-            <TextFilter>Filter:</TextFilter>
-            <DropdownWrapper>
-              <IconSeta src={imgIconSeta} alt="Seta Icon" />
-              <FilterDropdown
-                value={nameFilter}
-                onChange={e => setNameFilter(e.target.value)}
-              >
-                <option value="">Name</option>
-                {planetsData?.results?.map((planet: Planet) => (
-                  <option key={planet.name} value={planet.name}>
-                    {planet.name}
-                  </option>
-                ))}
-              </FilterDropdown>
-            </DropdownWrapper>
-            <DropdownWrapper>
-              <IconSeta src={imgIconSeta} alt="Seta Icon" />
-              <FilterDropdown
-                value={populationFilter}
-                onChange={e => setPopulationFilter(e.target.value)}
-              >
-                <option value="">Population</option>
-                {planetsData?.results?.map((planet: Planet) => (
-                  <option key={planet.population} value={planet.population}>
-                    {planet.population}
-                  </option>
-                ))}
-              </FilterDropdown>
-            </DropdownWrapper>
-          </FilterContainer>
-        </CardRight>
-        <SpaceshipIcon src={imgSpaceship} alt="Spaceship" />
-      </CardDefaultContainer>
+      {isCardVisible && (
+        <CardDefaultContainer>
+          <CardLeft>
+            <CardImage src={imgCardLeft} alt="Example" />
+          </CardLeft>
+          <CardRight>
+            <CardText>
+              Discover all the information about Planets of the Star Wars Saga
+            </CardText>
+            <div>
+              <CardInput
+                type="text"
+                value={query}
+                onChange={handleInputChange}
+                placeholder="Enter the name of the planet"
+              />
+              {suggestion &&
+                suggestion.toLowerCase() !== query.toLowerCase() && (
+                  <div>
+                    {query}
+                    <span>{suggestion.slice(query.length)}</span>
+                  </div>
+                )}
+            </div>
+            <CardButton onClick={handleSearch}>
+              <LupaIcon src={imgLupaFilter} alt="Lupa Icon" />
+              Search
+            </CardButton>
+            <FilterContainer>
+              <LineImage src={imgVetor} alt="Line" />
+              <TextFilter>Filter:</TextFilter>
+              <DropdownWrapper>
+                <IconSeta src={imgIconSeta} alt="Seta Icon" />
+                <FilterDropdown
+                  value={nameFilter}
+                  onChange={e => setNameFilter(e.target.value)}
+                >
+                  <option value="">Name</option>
+                  {planetsData?.results?.map((planet: Planet) => (
+                    <option key={planet.name} value={planet.name}>
+                      {planet.name}
+                    </option>
+                  ))}
+                </FilterDropdown>
+              </DropdownWrapper>
+              <DropdownWrapper>
+                <IconSeta src={imgIconSeta} alt="Seta Icon" />
+                <FilterDropdown
+                  value={populationFilter}
+                  onChange={e => setPopulationFilter(e.target.value)}
+                >
+                  <option value="">Population</option>
+                  {planetsData?.results?.map((planet: Planet) => (
+                    <option key={planet.population} value={planet.population}>
+                      {planet.population}
+                    </option>
+                  ))}
+                </FilterDropdown>
+              </DropdownWrapper>
+            </FilterContainer>
+          </CardRight>
+          <SpaceshipIcon src={imgSpaceship} alt="Spaceship" />
+        </CardDefaultContainer>
+      )}
       <PlanetModal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+          setIsCardVisible(true);
+        }}
         planet={selectedPlanet}
       />
       {planetError && <p>Error: {planetError.message}</p>}
