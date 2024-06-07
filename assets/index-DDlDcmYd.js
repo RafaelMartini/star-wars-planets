@@ -42,7 +42,7 @@ Error generating stack: `+i.message+`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 `,Hw=J.div`
   flex: 1;
   display: flex;
