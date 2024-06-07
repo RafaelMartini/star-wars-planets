@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="star-wars-planets" />
+  <img src="./.github/app.gif" alt="star" />
 
 &#xa0;
 
@@ -8,19 +8,19 @@
 <h1 align="center">Star Wars Planets</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/RafaelMartini/star-wars-planets?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/RafaelMartini/innovatetechapp?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/RafaelMartini/star-wars-planets?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/RafaelMartini/innovatetechapp?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/RafaelMartini/star-wars-planets?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/RafaelMartini/innovatetechapp?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/RafaelMartini/star-wars-planets?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/RafaelMartini/innovatetechapp?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/RafaelMartini/star-wars-planets?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/RafaelMartini/innovatetechapp?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/RafaelMartini/star-wars-planets?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/RafaelMartini/innovatetechapp?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/RafaelMartini/star-wars-planets?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/RafaelMartini/innovatetechapp?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
@@ -108,7 +108,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 # Clone o projeto
 $ git clone https://github.com/RafaelMartini/star-wars-planets
 
-# Acesse a pasta star-wars-planets
+# Acesse a pasta innovatetechapp
 $ cd star-wars-planets
 
 # Instale as dependências
