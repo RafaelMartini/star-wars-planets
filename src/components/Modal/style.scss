@@ -22,7 +22,9 @@
   outline: none;
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: 80%;
+    height: 55%;
+    margin-top: 5rem;
   }
 }
 
@@ -154,8 +156,8 @@
   text-decoration: none;
 
   @media (max-width: 768px) {
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 6rem;
+    right: 0rem;
     font-size: 14px;
   }
 }
