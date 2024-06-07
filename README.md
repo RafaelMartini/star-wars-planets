@@ -43,35 +43,29 @@ O Star Wars Planets foi criado para mostrar os planetas da saga Star Wars, basea
 
 ## :sparkles: Features
 
-:heavy_check_mark: **Feature 1: Tela de Carregamento Inicial**  
-Exibição da logo da InnovateTech enquanto o aplicativo carrega.
+:heavy_check_mark: **Feature 1: Interface de Busca**
+Permite que os usuários filtrem planetas pelo nome e população.
 
-:heavy_check_mark: **Feature 2: Listagem Paginada de Alunos**  
-Exibição dos alunos com uma paginação que carrega 20 alunos por vez, com carregamento adicional ao atingir o final da lista.
+:heavy_check_mark: **Feature 2: Chamada de API**
+Faz uma chamada à API pública do Star Wars (SWAPI) para obter informações sobre o planeta inserido pelo usuário.
 
-:heavy_check_mark: **Feature 3: Filtragem de Alunos**  
-Funcionalidade de pesquisa que permite filtrar alunos pelo primeiro ou segundo nome através de uma barra de busca.
+:heavy_check_mark: **Feature 3: Exibição de Informações**
+Exibe as seguintes informações sobre o planeta: Nome do planeta, Clima, Terreno, População, Filmes em que o planeta apareceu (lista de títulos) e sua contagem, Residentes do planeta (caso haja, liste seus nomes).
 
-:heavy_check_mark: **Feature 4: Visualização Detalhada de Alunos**  
-Ao selecionar um aluno, um modal deve ser aberto mostrando detalhes como imagem, nome completo, email, gênero, data de nascimento, telefone, nacionalidade, endereço e ID.
+:heavy_check_mark: **Feature 4: Exibição de Imagens**
+Exibe imagens dos planetas utilizando links fornecidos (do S3) e mescla as imagens da forma mais performática possível.
 
-:heavy_check_mark: **Feature 5: Filtro por Gênero**  
-Um filtro adicional na listagem para selecionar alunos por gênero.
+:heavy_check_mark: **Feature 5: Edição de Informações Local**
+Permite que o nome dos planetas possa ser alterado localmente, de forma que se a página for atualizada, os dados voltem a ser como eram originalmente retornados pela API.
 
-:heavy_check_mark: **Feature 6: Cache de Dados**  
-Após o primeiro carregamento dos dados, armazenar as informações no cache interno do dispositivo para acesso rápido sem necessidade de nova consulta à API em reinicializações subsequentes.
+:heavy_check_mark: **Feature 6: Gerenciamento de Estado**
+Gerencia o estado do aplicativo de forma apropriada utilizando React, fazendo um código performático e bem construído.
 
-:heavy_check_mark: **Feature 7: Gerenciamento de Estado**  
-Uso do Redux para manejar o estado global da aplicação.
+:heavy_check_mark: **Feature 7: Tratamento de Erros**
+Trata erros de chamada à API (por exemplo, se o planeta não for encontrado) e fornece feedback ao usuário.
 
-:heavy_check_mark: **Feature 8: Botão de subir a lista**  
-Criei um botão para subir o FlatList sem precisar dr scrool para cima, com 1 click o usuário chega ao topo da lista.
-
-:heavy_check_mark: **Feature 9: Thema Dark e Ligth**  
-Para melhorar a experiência do usuário e melhorar a visibilidade em ambientes escuros, criei um botão superior lateral para mudar para thema claro e escuro.
-
-:heavy_check_mark: **Feature 10: Tradução de inglês para português**  
-Traduzi o tudo o que vinha de inglês do endpoint para português dinamicamente.
+:heavy_check_mark: **Feature 8: Design Fiel**
+Replica o design fornecido da maneira mais fiel possível, conforme o link do Figma.
 
 ## :rocket: Technologies
 
