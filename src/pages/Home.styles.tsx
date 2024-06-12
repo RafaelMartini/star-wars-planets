@@ -5,7 +5,7 @@ export const ScreenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto; /* Permitir scroll vertical */
 `;
 
 export const HomeContainer = styled.div`
@@ -38,16 +38,12 @@ export const HomeTitle = styled.img`
 `;
 
 export const HomeContent = styled.main`
-  height: 62%;
+  flex: 1; /* Ajusta o conteúdo para ocupar o espaço restante */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    height: 69%;
-  }
 `;
 
 export const HomeFooter = styled.footer`
