@@ -6,6 +6,10 @@ export const ScreenWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    overflow-y: auto;
+  }
 `;
 
 export const HomeContainer = styled.div`
