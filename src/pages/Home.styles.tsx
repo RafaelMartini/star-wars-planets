@@ -6,6 +6,7 @@ export const ScreenWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow-y: auto; /* Permitir scroll vertical */
+
 `;
 
 export const HomeContainer = styled.div`
