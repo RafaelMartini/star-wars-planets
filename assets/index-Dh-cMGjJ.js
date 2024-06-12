@@ -43,6 +43,10 @@ Error generating stack: `+i.message+`
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    overflow-y: auto;
+  }
 `,Hw=X.div`
   flex: 1;
   display: flex;
