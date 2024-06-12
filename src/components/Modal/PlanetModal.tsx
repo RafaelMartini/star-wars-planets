@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import imgClimate from '../../assets/images/climate.png';
 import imgTerrain from '../../assets/images/terrain.png';
@@ -14,7 +14,7 @@ import {
   PlanetImage,
   PlanetNameContainer,
   PlanetLabel,
-  PlanetName,
+  PlanetNameInput,
   ModalRight,
   PlanetInfoRow,
   InfoIcon,
@@ -53,6 +53,23 @@ const PlanetModal: React.FC<PlanetModalProps> = ({
   onRequestClose,
   planet,
 }) => {
+  const [planetName, setPlanetName] = useState(planet?.name || '');
+
+  useEffect(() => {
+    if (planet) {
+      const savedName = localStorage.getItem(`planetName-${planet.name}`);
+      setPlanetName(savedName || planet.name);
+    }
+  }, [planet]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+    setPlanetName(newName);
+    if (planet) {
+      localStorage.setItem(`planetName-${planet.name}`, newName);
+    }
+  };
+
   if (!planet) {
     return null;
   }
@@ -76,7 +93,11 @@ const PlanetModal: React.FC<PlanetModalProps> = ({
             )}
             <PlanetNameContainer>
               <PlanetLabel>Planet:</PlanetLabel>
-              <PlanetName>{planet.name}</PlanetName>
+              <PlanetNameInput
+                type="text"
+                value={planetName}
+                onChange={handleNameChange}
+              />
             </PlanetNameContainer>
           </ModalLeft>
           <ModalRight>

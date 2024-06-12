@@ -173,3 +173,18 @@ export const BackButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const PlanetNameInput = styled.input`
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 0;
+  border: none;
+  padding: 5px;
+  outline: none;
+  width: 101%;
+
+  &:focus {
+    border-bottom: 2px solid #000;
+  }
+`;
