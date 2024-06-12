@@ -5,8 +5,7 @@ export const ScreenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow-y: auto; /* Permitir scroll vertical */
-
+  overflow-y: auto;
 `;
 
 export const HomeContainer = styled.div`
@@ -39,7 +38,7 @@ export const HomeTitle = styled.img`
 `;
 
 export const HomeContent = styled.main`
-  flex: 1; /* Ajusta o conteúdo para ocupar o espaço restante */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
